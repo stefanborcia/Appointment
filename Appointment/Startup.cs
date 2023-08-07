@@ -1,4 +1,7 @@
-﻿public class Startup
+﻿using Appointment.Models;
+using Microsoft.EntityFrameworkCore;
+
+public class Startup
 {
     public IConfiguration configRoot
     {
@@ -10,6 +13,7 @@
     }
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configRoot.GetConnectionString("DefaultConnection")));
         services.AddRazorPages();
     }
     public void Configure(WebApplication app, IWebHostEnvironment env)
