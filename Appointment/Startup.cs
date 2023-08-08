@@ -11,10 +11,9 @@ public class Startup
     {
         configRoot = configuration;
     }
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services) 
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configRoot.GetConnectionString("DefaultConnection")));
-        services.AddRazorPages();
     }
     public void Configure(WebApplication app, IWebHostEnvironment env)
     {
