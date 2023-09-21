@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppointmentScheduling;
 
-namespace AppointmentScheduling
+namespace Appointment
 {
     public class Program
     {
