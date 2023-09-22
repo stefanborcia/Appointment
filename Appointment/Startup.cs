@@ -30,6 +30,8 @@ namespace AppointmentScheduling
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
+            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
