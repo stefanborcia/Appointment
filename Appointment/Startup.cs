@@ -30,7 +30,9 @@ namespace AppointmentScheduling
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
 
-            services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
@@ -59,8 +61,10 @@ namespace AppointmentScheduling
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
