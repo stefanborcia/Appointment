@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Appointment.Services;
 
 namespace AppointmentScheduling
 {
@@ -30,6 +31,9 @@ namespace AppointmentScheduling
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+
+            services.AddTransient<IAppointmentService,AppointmentService>();
+
             services.TryAddScoped<SignInManager<ApplicationUser>>();
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
